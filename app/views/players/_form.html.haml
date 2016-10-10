@@ -1,0 +1,31 @@
+= form_for @player do |f|
+  - if @player.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
+      %ul
+        - @player.errors.full_messages.each do |msg|
+          %li= msg
+
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :first_name,class:"mdl-textfield__label grey-text"
+    = f.text_field :first_name,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :last_name,class:"mdl-textfield__label grey-text"
+    = f.text_field :last_name,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :telefono,class:"mdl-textfield__label grey-text"
+    = f.text_field :telefono,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :email,class:"mdl-textfield__label grey-text"
+    = f.text_field :email,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :movil,class:"mdl-textfield__label grey-text"
+    = f.text_field :movil,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :number_id,class:"mdl-textfield__label grey-text"
+    = f.text_field :number_id,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :team,class:"mdl-textfield__label grey-text"
+    = f.text_field :team_id,class:"mdl-textfield__input"
+  .actions
+    = f.submit 'Save',class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"

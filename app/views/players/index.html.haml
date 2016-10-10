@@ -1,0 +1,35 @@
+.col-xs-18.col-sm-8.col-md-6.col-lg-4 
+  .box       
+    .big-padding
+      %h1 players
+      %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+        %thead
+          %tr
+            %th First name
+            %th Last name
+            %th Telefono
+            %th Email
+            %th Movil
+            %th Number
+            %th Team
+            %th
+            %th
+            %th
+
+        %tbody
+          - @players.each do |player|
+            %tr
+              %td= player.first_name
+              %td= player.last_name
+              %td= player.telefono
+              %td= player.email
+              %td= player.movil
+              %td= player.number_id
+              %td= player.team.name
+              %td= link_to 'Show', player
+              %td= link_to 'Edit', edit_player_path(player)
+              %td= link_to 'Destroy', player, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      %br
+
+      = link_to 'New Player', new_player_path

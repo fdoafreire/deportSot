@@ -1,0 +1,31 @@
+.col-xs-18.col-sm-8.col-md-6.col-lg-4 
+  .box       
+    .big-padding
+      %p#notice= notice
+      %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+        %thead
+          %tr
+            %th.text-center{:colspan => 2,style:"text-align:center;"}= @championship.name
+        %tbody
+          %tr
+            %td quantity_min_teams:
+            %td= @championship.quantity_min_teams
+          %tr
+            %td date_initial_inscription:
+            %td= @championship.date_initial_inscription
+          %tr
+            %td date_end_inscription:
+            %td= @championship.date_end_inscription
+          %tr
+            %td match_duration:
+            %td= @championship.match_duration
+          %tr
+            %td matches_simultanius:
+            %td= @championship.matches_simultanius
+          %tr
+            %td game_days:
+            %td= @championship.game_days
+
+      %br
+      = link_to 'Edit', edit_championship_path(@championship)
+      = link_to 'Back', championships_path

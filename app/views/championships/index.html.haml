@@ -1,0 +1,28 @@
+.col-xs-18.col-sm-8.col-md-6.col-lg-4 
+  .box       
+    .big-padding
+      %h1 Championships
+      %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+        %thead
+          %tr
+            %th Name
+            %th Quantity min teams
+            %th Date initial inscription
+            %th Date end inscription
+            %th
+            %th
+            %th
+        %tbody
+          - @championships.each do |championship|
+            %tr
+              %td= championship.name
+              %td= championship.quantity_min_teams
+              %td= championship.date_initial_inscription
+              %td= championship.date_end_inscription
+              %td= link_to 'Show', championship
+              %td= link_to 'Edit', edit_championship_path(championship)
+              %td= link_to 'Destroy', championship, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      %br
+
+      = link_to 'New Championship', new_championship_path

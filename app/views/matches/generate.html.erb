@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
+<p>Cantidad Equipos:<%=  @teamsr.count %></P>
+<p>Cantidad partidos:<%=  @count_matches %></P>
+<p>Cantidad jornadas:<%=  @count_date %></P>
+<p>Partidos X jornada:<%=  @count_matches_date %></P>
+<p>Partidos X jornada:<%=  @matches %></P>
+
+
+<% @teams.each do |team| %>
+        <p><%= team.id %>-<%= team.name %></P>
+<% end %>
+
+<table border=1>
+
+<% @matchesr.each do |row| %>
+       <tr>
+      <% row.each do |colum| %>
+        <td> <%= colum %></td>
+      <% end %>
+       </tr>
+<% end %>
+<table>

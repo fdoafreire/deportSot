@@ -1,0 +1,25 @@
+= form_for @match do |f|
+  - if @match.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@match.errors.count, "error")} prohibited this match from being saved:"
+      %ul
+        - @match.errors.full_messages.each do |msg|
+          %li= msg
+
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :local,class:"mdl-textfield__label grey-text"
+    = f.text_field :local_id,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :visitant,class:"mdl-textfield__label grey-text"
+    = f.text_field :visitant_id,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :match_date,class:"mdl-textfield__label grey-text"
+    = f.text_field :match_date,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :date_number,class:"mdl-textfield__label grey-text"
+    = f.number_field :date_number,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :championship,class:"mdl-textfield__label grey-text"
+    = f.text_field :championship,class:"mdl-textfield__input"
+  .actions
+    = f.submit 'Save', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"

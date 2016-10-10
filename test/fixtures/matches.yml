@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  local: one
+  visitant: one
+  match_date: 2016-09-09 20:52:32
+  date_number: 1
+  championship: one
+
+two:
+  local: two
+  visitant: two
+  match_date: 2016-09-09 20:52:32
+  date_number: 1
+  championship: two

@@ -1,0 +1,23 @@
+// Place all the styles related to the Main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-background {
+	background-image:url(#{asset_path('background2.jpg')});
+	background-size:cover;
+	background-repeat:none;
+}
+.main-background-interna {
+	background-image:url(#{asset_path('background.jpg')});
+	background-size:cover;
+	background-repeat:none;
+}
+.main-background-jugadores {
+	background-image:url(#{asset_path('bck-juagdor.jpg')});
+	background-size:cover;
+	background-repeat:none;
+}
+.border-grey {
+	border:solid #2C3E50;
+	border-radius:11px;
+}

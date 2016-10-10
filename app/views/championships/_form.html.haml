@@ -1,0 +1,30 @@
+= form_for @championship do |f|
+  - if @championship.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@championship.errors.count, "error")} prohibited this championship from being saved:"
+      %ul
+        - @championship.errors.full_messages.each do |msg|
+          %li= msg
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.text_field :name,class:"mdl-textfield__input"
+    = f.label :name,class:"mdl-textfield__label grey-text"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :quantity_min_teams,class:"mdl-textfield__label grey-text"
+    = f.number_field :quantity_min_teams,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :date_initial_inscription,class:"mdl-textfield__label grey-text"
+    = f.text_field :date_initial_inscription,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :date_end_inscription,class:"mdl-textfield__label grey-text"
+    = f.text_field :date_end_inscription,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :match_duration,class:"mdl-textfield__label grey-text"
+    = f.text_field :match_duration,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :matches_simultanius,class:"mdl-textfield__label grey-text"
+    = f.text_field :matches_simultanius,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :game_days,class:"mdl-textfield__label grey-text"
+    = f.text_field :game_days,class:"mdl-textfield__input"
+  .mui-btn
+    = f.submit 'Save', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"

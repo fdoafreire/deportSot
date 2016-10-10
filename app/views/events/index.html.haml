@@ -1,0 +1,21 @@
+.col-xs-18.col-sm-8.col-md-6.col-lg-4 
+  .box       
+    .big-padding
+      %h1 Listing events
+      %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+        %thead
+          %tr
+            %th Name
+            %th
+            %th
+            %th
+
+        %tbody
+          - @events.each do |event|
+            %tr
+            %td= event.name
+            %td= link_to 'Show', event
+            %td= link_to 'Edit', edit_event_path(event)
+            %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %br
+      = link_to 'New Event', new_event_path

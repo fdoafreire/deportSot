@@ -1,0 +1,22 @@
+= form_for @team do |f|
+  - if @team.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+      %ul
+        - @team.errors.full_messages.each do |msg|
+          %li= msg
+
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :name,class:"mdl-textfield__label grey-text"
+    = f.text_field :name,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :curso,class:"mdl-textfield__label grey-text"
+    = f.text_field :curso,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :user,class:"mdl-textfield__label grey-text"
+    = f.text_field :user_id,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :championship,class:"mdl-textfield__label grey-text"
+    = f.text_field :championship_id,class:"mdl-textfield__input"
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.submit 'Save', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"

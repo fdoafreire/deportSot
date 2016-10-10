@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  quantity_min_teams: 1
+  date_initial_inscription: 2016-09-09 18:59:20
+  date_end_inscription: 2016-09-09 18:59:20
+
+two:
+  name: MyText
+  quantity_min_teams: 1
+  date_initial_inscription: 2016-09-09 18:59:20
+  date_end_inscription: 2016-09-09 18:59:20

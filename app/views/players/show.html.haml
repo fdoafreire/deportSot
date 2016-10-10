@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @player.first_name
+%p
+  %b Last name:
+  = @player.last_name
+%p
+  %b Telefono:
+  = @player.telefono
+%p
+  %b Email:
+  = @player.email
+%p
+  %b Movil:
+  = @player.movil
+%p
+  %b Number:
+  = @player.number_id
+%p
+  %b Team:
+  = @player.team.name
+
+= link_to 'Edit', edit_player_path(@player)
+\|
+= link_to 'Back', players_path
