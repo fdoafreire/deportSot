@@ -20,6 +20,11 @@ class MatchesController < ApplicationController
   # GET /matches/1/edit
   def edit
   end
+
+  def generate_form
+     @championships=Team.all
+  end
+
   # GET /generate/1/matches
   def generate
      @championship =Championship.find(params[:id])

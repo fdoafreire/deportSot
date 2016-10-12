@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   	root 'main#unregistered'
   end
 
-  get 'generate/:id/matches'=>'matches#generate' 
+  get  'matches-create' => 'matches#generate_form'
+  post 'matches-generate' => 'matches#generate'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

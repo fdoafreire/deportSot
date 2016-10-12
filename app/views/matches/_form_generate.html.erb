@@ -1,0 +1,15 @@
+  <%= form_tag({controller: "matches", action: "generate"}, method: "post" ) do |f| %>
+  <div class="field">
+    <%= label_tag(:championship_id, "championship:") %><br>
+    <% cities_array = @championships.map { |city| [city.name, city.id] } %>
+    <% options= [['Sena 2016', 1], ['Sena 2017', 2]] %>
+    <%= select_tag(:championship_id,options_for_select(options)) %>
+  </div>
+  <div class="field">
+    <%= label_tag(:date_start, "Date start:",:class => "labels") %><br>
+    <%= text_field_tag(:date_start,nil,:class => "field-text-input") %>
+  </div>
+  <div class="field">
+     <%= submit_tag("Generar programación") %>
+  </div>
+<% end %>
