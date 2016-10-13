@@ -27,7 +27,7 @@ class MatchesController < ApplicationController
 
   # GET /generate/1/matches
   def generate
-     @championship =Championship.find(params[:id])
+     @championship =Championship.find(params[:championship_id])
      @teams = Team.where(championship_id: @championship.id)
      @count_matches=(@teams.count * (@teams.count - 1))/ 2
      cont = 0
@@ -44,7 +44,7 @@ class MatchesController < ApplicationController
         for x in (0..@count_date - 1) 
             for y in (0..@count_matches_date - 1)
                 @matchesr[x][y]=@teamsr[cont]
-                cont = cont + 1
+                cont += 1
                 if cont == @teamsr.count - 1
                   cont = 0
                 end
@@ -57,23 +57,14 @@ class MatchesController < ApplicationController
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << @teamsr.last.to_s
                  else
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << @teamsr[cont].to_s
-                    cont = cont - 1
+                    cont += 1
                     if cont < 0
                       cont = @teamsr.count - 2
                     end
                  end
             end
         end
-        cont=1;
-        @matchesr.each do | row |
-           row.each do | col |
-             matchr = col.split('-')
-             local_id = matchr[0].to_i
-             visit_id = matchr[1].to_i
-             match= Match.create(local_id:local_id,visitant_id:visit_id,match_date:Time.now.strftime("%Y-%d-%m %H:%M:%S %Z"),date_number:cont,championship_id:1)
-           end
-           cont= cont + 1
-        end
+        write_matches(@matchesr)
      else
         @count_matches_date = (@teams.count - 1) / 2
         @count_date = @teams.count 
@@ -82,7 +73,7 @@ class MatchesController < ApplicationController
         for x in (0..@count_date - 1) 
             for y in (0..@count_matches_date)
                 @matchesr[x][y]=@teamsr[cont]
-                cont = cont + 1
+                cont += 1
                 if cont == @teamsr.count 
                   cont = 0
                 end
@@ -95,13 +86,14 @@ class MatchesController < ApplicationController
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << "libre"
                  else
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << @teamsr[cont].to_s
-                    cont = cont - 1
+                    cont += 1
                     if cont < 0
                       cont = @teamsr.count - 1
                     end
                  end
             end
         end
+        write_matches(@matchesr,false)
      end
   end
 
@@ -159,6 +151,49 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id)
+      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start)
     end
+    # function that calculates the next play date
+    # Params:
+    # - date_matche: Time -  it contains last date of game
+    # - days_game: array of string - it contains number days of week of game
+    def get_dates_matche  (date_matche,days_game)
+      flag_continue=true
+      while flag_continue do
+        date_matche = date_matche + 1.days
+        day_week=date_matche.wday
+        if days_game.include?(day_week.to_s)
+           return date_matche
+        end 
+      end
+    end
+    # function that writes the database programming games
+    # Params:
+    # - matches: array of string  - it  contains crossings teams
+    # - flag_even: Boolean - flag used to see if it is of type pair
+    # - simultaneous_games: Integer - is contains quantity of simultaneous games
+    # - days_game: array of string - it contains number days of week of game (parameter necessary to calculate date matche)
+    def write_matches (matches,flag_even=true,simultaneous_games=1,days_game)
+        counter_date_number=1;
+        counter_simultaneous_games=1
+        date_game_matche = params[:date_start]
+        @matchesr.each do | row |
+           row.each_with_index do | col, key |
+             if key == 0  &  !flag_continue
+                next
+             end
+             matchr = col.split('-')
+             local_id = matchr[0].to_i
+             visit_id = matchr[1].to_i
+             match= Match.create(local_id:local_id,visitant_id:visit_id,match_date:date_game_matche.strftime("%Y-%d-%m %H:%M:%S %Z"),date_number:counter_date_number,championship_id:1)
+             counter_simultaneous_games += 1
+             if counter_simultaneous_games > simultaneous_games
+                counter_simultaneous_games = 1
+                get_dates_matche(date_game_matche,days_game)
+             end
+           end
+           counter_date_number += 1
+        end
+    end
+
 end
