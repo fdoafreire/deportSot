@@ -35,7 +35,8 @@ class MatchesController < ApplicationController
      @teams.each do | team | 
          @teamsr[cont]=team.id
          cont=cont + 1;
-     end 
+     end
+     days_game = @championship.game_days.split(',') 
      if @teams.count.even?
         @count_matches_date = @teams.count / 2
         @count_date = @teams.count - 1
@@ -57,14 +58,14 @@ class MatchesController < ApplicationController
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << @teamsr.last.to_s
                  else
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << @teamsr[cont].to_s
-                    cont += 1
+                    cont -= 1
                     if cont < 0
                       cont = @teamsr.count - 2
                     end
                  end
             end
         end
-        write_matches(@matchesr)
+        write_matches(@matchesr,@championship.matches_simultanius,days_game)
      else
         @count_matches_date = (@teams.count - 1) / 2
         @count_date = @teams.count 
@@ -86,14 +87,14 @@ class MatchesController < ApplicationController
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << "libre"
                  else
                     @matchesr[x][y]=@matchesr[x][y].to_s << "-" << @teamsr[cont].to_s
-                    cont += 1
+                    cont -= 1
                     if cont < 0
                       cont = @teamsr.count - 1
                     end
                  end
             end
         end
-        write_matches(@matchesr,false)
+        write_matches(@matchesr,@championship.matches_simultanius,days_game,true)
      end
   end
 
@@ -173,13 +174,13 @@ class MatchesController < ApplicationController
     # - flag_even: Boolean - flag used to see if it is of type pair
     # - simultaneous_games: Integer - is contains quantity of simultaneous games
     # - days_game: array of string - it contains number days of week of game (parameter necessary to calculate date matche)
-    def write_matches (matches,flag_even=true,simultaneous_games=1,days_game)
+    def write_matches (matches,simultaneous_games,days_game,flag_uneven=false)
         counter_date_number=1;
         counter_simultaneous_games=1
-        date_game_matche = params[:date_start]
+        date_game_matche = Time.parse(params[:date_start])
         @matchesr.each do | row |
            row.each_with_index do | col, key |
-             if key == 0  &  !flag_continue
+             if key == 0  &&  flag_uneven
                 next
              end
              matchr = col.split('-')
@@ -189,7 +190,7 @@ class MatchesController < ApplicationController
              counter_simultaneous_games += 1
              if counter_simultaneous_games > simultaneous_games
                 counter_simultaneous_games = 1
-                get_dates_matche(date_game_matche,days_game)
+                date_game_matche=get_dates_matche(date_game_matche,days_game)
              end
            end
            counter_date_number += 1
