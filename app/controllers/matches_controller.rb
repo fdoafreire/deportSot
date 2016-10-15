@@ -178,7 +178,8 @@ class MatchesController < ApplicationController
         counter_date_number=1;
         counter_simultaneous_games=1
         date_game_matche = Time.parse(params[:date_start])
-        @matchesr.each do | row |
+        puts "fecha:" << date_game_matche.to_s
+        matches.each do | row |
            row.each_with_index do | col, key |
              if key == 0  &&  flag_uneven
                 next
@@ -186,7 +187,7 @@ class MatchesController < ApplicationController
              matchr = col.split('-')
              local_id = matchr[0].to_i
              visit_id = matchr[1].to_i
-             match= Match.create(local_id:local_id,visitant_id:visit_id,match_date:date_game_matche.strftime("%Y-%d-%m %H:%M:%S %Z"),date_number:counter_date_number,championship_id:1)
+             match= Match.create(local_id:local_id,visitant_id:visit_id,match_date:date_game_matche,date_number:counter_date_number,championship_id:1)
              counter_simultaneous_games += 1
              if counter_simultaneous_games > simultaneous_games
                 counter_simultaneous_games = 1

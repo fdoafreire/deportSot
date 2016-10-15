@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008001602) do
+ActiveRecord::Schema.define(version: 20161015172647) do
 
   create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20161008001602) do
     t.datetime "match_date"
     t.integer  "date_number"
     t.integer  "championship_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "goals_local_team"
+    t.integer  "goals_visitant_team"
     t.index ["championship_id"], name: "index_matches_on_championship_id", using: :btree
   end
 
