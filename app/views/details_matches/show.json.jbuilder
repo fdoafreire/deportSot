@@ -1,0 +1,1 @@
+json.partial! "details_matches/details_match", details_match: @details_match

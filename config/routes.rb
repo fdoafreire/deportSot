@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :details_matches
   resources :matches
   resources :players
   resources :teams
@@ -21,5 +22,9 @@ Rails.application.routes.draw do
 
   get  'matches-create' => 'matches#generate_form'
   post 'matches-generate' => 'matches#generate'
+  
+  get  'matches-capture-details/:id' => 'matches#details_form'
+  get  'matches-details/:id' => 'matches#details'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,5 @@
 .col-md-10
   %h1 Listing matches
-
   %table.table.table-striped
     %thead
       %tr
@@ -9,9 +8,8 @@
         %th Match date
         %th Date number
         %th Championship
-        %th
-        %th
-        %th
+        %th Result
+        %th{:colspan =>2} Actions
 
     %tbody
       - @matches.each do |match|
@@ -21,10 +19,7 @@
           %td= match.match_date
           %td= match.date_number
           %td= match.championship.name
+          %td= "#{match.goals_local_team} - #{match.goals_visitant_team}" 
           %td= link_to 'Show', match
-          %td= link_to 'Edit', edit_match_path(match)
-          %td= link_to 'Destroy', match, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-  %br
-
-  = link_to 'New Match', new_match_path
+          %td= link_to 'Details', 'matches-capture-details/' << match.id.to_s
+ 

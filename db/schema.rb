@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015172647) do
+ActiveRecord::Schema.define(version: 20161020020055) do
 
   create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 20161015172647) do
     t.string   "match_duration"
     t.integer  "matches_simultanius"
     t.string   "game_days"
+  end
+
+  create_table "details_matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "match_id"
+    t.integer  "team_id"
+    t.integer  "player_id"
+    t.integer  "event_id"
+    t.integer  "minute"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_details_matches_on_event_id", using: :btree
+    t.index ["match_id"], name: "index_details_matches_on_match_id", using: :btree
+    t.index ["player_id"], name: "index_details_matches_on_player_id", using: :btree
+    t.index ["team_id"], name: "index_details_matches_on_team_id", using: :btree
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,9 +65,11 @@ ActiveRecord::Schema.define(version: 20161015172647) do
     t.string   "movil"
     t.string   "number_id"
     t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "tshirt_number"
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
+    t.index ["tshirt_number"], name: "index_players_on_tshirt_number", unique: true, using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -106,6 +122,10 @@ ActiveRecord::Schema.define(version: 20161015172647) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  add_foreign_key "details_matches", "events"
+  add_foreign_key "details_matches", "matches"
+  add_foreign_key "details_matches", "players"
+  add_foreign_key "details_matches", "teams"
   add_foreign_key "matches", "championships"
   add_foreign_key "players", "teams"
   add_foreign_key "teams", "championships"

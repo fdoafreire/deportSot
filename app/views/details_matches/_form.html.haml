@@ -1,0 +1,25 @@
+= form_for @details_match do |f|
+  - if @details_match.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@details_match.errors.count, "error")} prohibited this details_match from being saved:"
+      %ul
+        - @details_match.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :match
+    = f.text_field :match
+  .field
+    = f.label :team
+    = f.text_field :team
+  .field
+    = f.label :player
+    = f.text_field :player
+  .field
+    = f.label :event
+    = f.text_field :event
+  .field
+    = f.label :minute
+    = f.number_field :minute
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,1 @@
+json.array! @details_matches, partial: 'details_matches/details_match', as: :details_match

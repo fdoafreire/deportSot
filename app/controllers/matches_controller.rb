@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :set_match, only: [:show, :edit, :update, :destroy, :details_form]
 
   # GET /matches
   # GET /matches.json
@@ -23,6 +23,16 @@ class MatchesController < ApplicationController
 
   def generate_form
      @championships=Team.all
+  end
+
+  def details_form
+     @events           = Event.all
+     @players_local    = Player.where(team_id:@match.local_id)
+     @players_visitant = Player.where(team_id:@match.visitant_id)
+  end
+
+  def details
+      
   end
 
   # GET /generate/1/matches
@@ -152,7 +162,7 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start)
+      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start,:goals_local_team,:goals_visitant_team)
     end
     # function that calculates the next play date
     # Params:

@@ -2,10 +2,10 @@
 
 %p
   %b Local:
-  = @match.local
+  = @match.local.name
 %p
   %b Visitant:
-  = @match.visitant
+  = @match.visitant.name
 %p
   %b Match date:
   = @match.match_date
@@ -14,7 +14,7 @@
   = @match.date_number
 %p
   %b Championship:
-  = @match.championship
+  = @match.championship.name
 
 = link_to 'Edit', edit_match_path(@match)
 \|
