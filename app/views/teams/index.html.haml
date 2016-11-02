@@ -12,6 +12,7 @@
             %th
             %th
             %th
+            %th
         %tbody
           - @teams.each do |team|
             %tr
@@ -21,6 +22,7 @@
               %td= team.championship.name
               %td= link_to 'Show', team
               %td= link_to 'Edit', edit_team_path(team)
+              %td= link_to "Players", controller: "/players", action: "index", :team_id =>  team.id
               %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
       %br

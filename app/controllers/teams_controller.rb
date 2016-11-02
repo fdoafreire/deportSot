@@ -4,9 +4,9 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    championship_id=params[:id]
-    @teams = Championship.where(:championship_id,championship_id)
-    @teams = Team.all
+    championship_id=params[:championship_id]
+    @teams = Team.where(championship_id: championship_id)
+    @teams = Team.all if @teams.blank? && !params[:championship_id].present?
   end
 
   # GET /teams/1

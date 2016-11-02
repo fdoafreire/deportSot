@@ -1,0 +1,36 @@
+<h1> Details matches</h1>
+<div class="col-xs-8">
+	  <%= form_tag({controller: "details_matches", action: "create_detail"}, method: "post" ) do |f| %>
+	      <div class="col-xs-4">
+	          <fieldset class="form-group">
+	            <%= hidden_field_tag('match_id', @match.id) %>
+	            <%= label_tag(:team_id, "Team:") %><br>
+			    <% players_local_array = [[@match.local.name, @match.local.id], [@match.visitant.name, @match.visitant.id]] %>
+			    <%= select_tag(:team_id,options_for_select(players_local_array),:class=>"form-control",:prompt => '- choose -' ) %> 
+			   <div class="form-group autocomplete-player">
+			    <%= label_tag(:player_name, "Player:") %><br>
+				   <div class="input-group">
+				    <%= text_field_tag(:player_name,nil,:class => "form-control") %>
+				     <span class="input-group-addon">
+	                 	     <i class="glyphicon glyphicon-search"></i>
+	                 </span>
+				   </div>
+			   </div>
+	            <%= hidden_field_tag('player_id', 0) %>
+			   
+			   <div class="form-group">
+			    <%= label_tag(:event_id, "Event:") %><br>
+			    <% events_array = @events.map { |event| [event.name, event.id] } %>
+			    <%= select_tag(:event_id,options_for_select(events_array),:class=>"form-control",:prompt => '- choose -' ) %>
+			   </div>
+			   <div class="form-group">
+			    <%= label_tag(:minute, "Minute:") %>
+			    <%= text_field_tag(:minute,nil,:class => "form-control") %>
+			   </div>
+			   <div class="form-group">
+			     <%= submit_tag("Save event local",:class=>"btn btn-success center-element") %>
+			   </div>
+		      </fieldset>
+	      </div>
+	  <% end %>
+</div>

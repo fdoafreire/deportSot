@@ -53,7 +53,7 @@ class DetailsMatchesController < ApplicationController
     @details_match.minute    = params[:minute]
     respond_to do |format|
       if @details_match.save
-        format.html { redirect_to '/details_match/' << @details_match.match_id.t_s << '/new', notice: 'Details match was successfully created.' }
+        format.html { redirect_to '/details_match/' << @details_match.match_id.to_s << '/new', notice: 'Details match was successfully created.' }
         format.json { render :show, status: :created, location: @details_match }
       else
         format.html { render :new }

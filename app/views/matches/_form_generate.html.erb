@@ -1,9 +1,8 @@
   <%= form_tag({controller: "matches", action: "generate"}, method: "post" ) do |f| %>
   <div class="form-group">
     <%= label_tag(:championship_id, "championship:") %><br>
-    <% cities_array = @championships.map { |city| [city.name, city.id] } %>
-    <% options= [['Sena 2016', 1], ['Sena 2017', 2]] %>
-    <%= select_tag(:championship_id,options_for_select(options),:class=>"form-control") %>
+    <% options = @championships.map { |city| [city.name, city.id] } %>
+    <%= select_tag(:championship_id,options_for_select(options,@championship_id),:class=>"form-control",:prompt => 'Please select',:selected=>@championship_id) %>
   </div>
   <div class="form-group">
     <%= label_tag(:date_start, "Date start:") %>

@@ -4,7 +4,10 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all
+    team_id=params[:team_id]
+    @players = Player.where(team_id: team_id)
+    @players = Player.all if @players.blank? && !params[:team_id].present?
+
   end
 
   # GET /players/1

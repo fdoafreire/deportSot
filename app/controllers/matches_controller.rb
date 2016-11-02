@@ -26,7 +26,8 @@ class MatchesController < ApplicationController
   end
 
   def generate_form
-     @championships=Team.all
+     @championship_id=params[:championship_id]
+     @championships=Championship.all
   end
 
   # GET /generate/1/matches
