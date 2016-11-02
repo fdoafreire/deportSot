@@ -29,6 +29,12 @@ gem 'omniauth-facebook'
 gem 'flexbox_rb', "0.2.7.1"
 gem 'rolify'
 gem 'jquery-datetimepicker-rails'
+
+group :development, :test do
+    gem 'railroady'
+end
+
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

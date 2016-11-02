@@ -12,6 +12,10 @@ class MatchesController < ApplicationController
   def show
   end
 
+  def details_matches_path
+  end
+
+
   # GET /matches/new
   def new
     @match = Match.new
@@ -23,16 +27,6 @@ class MatchesController < ApplicationController
 
   def generate_form
      @championships=Team.all
-  end
-
-  def details_form
-     @events           = Event.all
-     @players_local    = Player.where(team_id:@match.local_id)
-     @players_visitant = Player.where(team_id:@match.visitant_id)
-  end
-
-  def details
-      
   end
 
   # GET /generate/1/matches

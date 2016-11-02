@@ -25,7 +25,11 @@
     = f.label :number_id,class:"mdl-textfield__label grey-text"
     = f.text_field :number_id,class:"mdl-textfield__input"
   .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :team,class:"mdl-textfield__label grey-text"
-    = f.text_field :team_id,class:"mdl-textfield__input"
+    = f.label :team
+    %br
+    = f.collection_select(:team_id, @teams, :id, :name, {:prompt=>true}, {:class=>'form-control'})
+  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :tshirt_number,class:"mdl-textfield__label grey-text"
+    = f.text_field :tshirt_number,class:"mdl-textfield__input"
   .actions
     = f.submit 'Save',class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"

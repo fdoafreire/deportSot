@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020020055) do
+ActiveRecord::Schema.define(version: 20161022010308) do
 
   create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20161020020055) do
     t.datetime "updated_at",    null: false
     t.integer  "tshirt_number"
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
-    t.index ["tshirt_number"], name: "index_players_on_tshirt_number", unique: true, using: :btree
+    t.index ["tshirt_number", "team_id"], name: "index_players_on_tshirt_number_and_team_id", using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

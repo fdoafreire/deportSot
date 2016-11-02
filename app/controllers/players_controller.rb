@@ -15,6 +15,7 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
+    @teams = Team.all
   end
 
   # GET /players/1/edit
@@ -22,7 +23,7 @@ class PlayersController < ApplicationController
   end
 
   def search 
-    @players = Player.order(:first_name,:last_name).where("first_name like ? or id = ? or tshirt_number = ? or last_name like ?","%#{params[:term]}%",params[:term],params[:term],params[:term])
+    @players = Player.order(:first_name,:last_name).where("(first_name like ? or id = ? or tshirt_number = ? or last_name like ?) and team_id=?","%#{params[:term]}%",params[:term],params[:term],"%#{params[:term]}%",params[:team_id])
     render json: @players
   end
 
@@ -75,6 +76,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:first_name, :last_name, :telefono, :email, :movil, :number_id, :team_id,:term)
+      params.require(:player).permit(:first_name, :last_name, :telefono, :email, :movil, :number_id, :team_id,:term,:tshirt_number)
     end
 end

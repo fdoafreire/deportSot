@@ -4,6 +4,8 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
+    championship_id=params[:id]
+    @teams = Championship.where(:championship_id,championship_id)
     @teams = Team.all
   end
 
@@ -15,6 +17,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+    @championships= Championship.all
   end
 
   # GET /teams/1/edit

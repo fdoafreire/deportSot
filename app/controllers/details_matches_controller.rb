@@ -11,24 +11,49 @@ class DetailsMatchesController < ApplicationController
   # GET /details_matches/1.json
   def show
   end
-
+  def details_matches_path
+  end
   # GET /details_matches/new
-  def new
-    @details_match = DetailsMatch.new
+
+  def details_form
+     @events       = Event.all
   end
 
+  def details_create
+    @detail = Details_match.new(match_params)
+
+    respond_to do |format|
+      if @match.save
+        format.html { redirect_to @match, notice: 'Match was successfully created.' }
+        format.json { render :show, status: :created, location: @match }
+      else
+        format.html { render :new }
+        format.json { render json: @match.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+ 
+  def new_detail
+    @events        = Event.all
+    @match         = Match.find(params[:match_id])
+    @details_matches = DetailsMatch.where(match_id: params[:match_id])
+  end
   # GET /details_matches/1/edit
   def edit
   end
 
   # POST /details_matches
   # POST /details_matches.json
-  def create
-    @details_match = DetailsMatch.new(details_match_params)
-
+  def create_detail
+    @details_match = DetailsMatch.new
+    @details_match.match_id  = params[:match_id]
+    @details_match.team_id   = params[:team_id]
+    @details_match.player_id = params[:player_id]
+    @details_match.event_id  = params[:event_id]
+    @details_match.minute    = params[:minute]
     respond_to do |format|
       if @details_match.save
-        format.html { redirect_to @details_match, notice: 'Details match was successfully created.' }
+        format.html { redirect_to '/details_match/' << @details_match.match_id.t_s << '/new', notice: 'Details match was successfully created.' }
         format.json { render :show, status: :created, location: @details_match }
       else
         format.html { render :new }
@@ -69,6 +94,6 @@ class DetailsMatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def details_match_params
-      params.require(:details_match).permit(:match_id, :team_id, :player_id, :event_id, :minute)
+      params.require(:details_match).permit(:match_id, :team_id, :player_id, :event_id, :minute,:player_name)
     end
 end
