@@ -7,6 +7,11 @@ class User < ApplicationRecord
          :omniauth_providers => [:facebook]
   has_many :teams
 
+  def fullname
+    fullname="#{self.first_name} #{self.last_name}"
+    fullname=self.email if fullname.blank?
+  end
+
   def self.from_omniauth(auth)
   	where(provider: auth[:provider],uid:auth[:uid]).first_or_create do |user|
   		if auth[:info]

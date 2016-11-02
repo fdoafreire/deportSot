@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @championships= Championship.all
+    @users= User.all
   end
 
   # GET /teams/1/edit
