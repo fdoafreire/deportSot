@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  #resources :details_matches
-  #resources :matches
   resources :matches 
   resources :players
   resources :teams

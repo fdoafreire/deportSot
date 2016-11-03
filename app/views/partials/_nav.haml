@@ -1,23 +1,51 @@
--if user_signed_in?
-  %header.mdl-layout__header.mdl-layout__header--scroll
-    .mdl-layout__header-row
-      %span.mdl-layout-title=link_to "Deport-Soft",root_path,class:"white-text",style:"text-decoration:none;"
-      .mdl-layout-spacer
-      %nav.mdl-navigation
-        =link_to "Cerrar sesión",destroy_user_session_path,method: :delete,class:"white-text"
-  .mdl-layout__drawer
-    %span.mdl-layout-title.white-text Deport-Soft
-    %nav.mdl-navigation
-      %ul
+/ /.navbar-collapse-if user_signed_in?
+/ /.navbar-collapse%header
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"} 
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "#"} Brand
+    .collapse.navbar-collapse{:id=>"bs-example-navbar-collapse-1"}
+      %ul.nav.navbar-nav
+        %li.active
+          %a{href:"#"}  
+            %span.sr-only current
         %li
-          =link_to "Eventos",     controller: "/events",        action: "index"
+          %a{href:"#"} Link
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle"=>"dropdown", "role"=>"button", "aria-haspopup"=>"true", "aria-expanded"=>"false",href:"#"}
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{href:"#"} Action
+            %li
+              %a{href:"#"} Another action
+            %li
+              %a{href:"#"} Something else here
+            %li.divider{"role"=>"separator"}
+            %li
+              %a{href:"#"} Separated link
+            %li.divider{"role"=>"separator"}
+            %li
+              %a{href:"#"} One more separated link
+      %ul.nav.navbar-nav.navbar-right
         %li
-          =link_to "Campeonatos", controller: "/championships", action: "index"
-        %li
-          =link_to "Programar partidos", controller: "/matches", action: "generate_form"
-        %li
-          =link_to "Equipos",     controller: "/teams",         action: "index"
-        %li
-          =link_to "Jugadores",   controller: "/players",       action: "index"
-        %li
-          =link_to "Partidos",    controller: "/matches",       action: "index"
+          %a{href:"#"}Link
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle"=>"dropdown", "role"=>"button", "aria-haspopup"=>"true", "aria-expanded"=>"false", href: "#"} 
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{href:"#"} Action
+            %li
+              %a{href:"#"} Another action
+            %li
+              %a{href:"#"} Something else here
+            %li.divider{"role"=>"separator"}
+            %li
+              %a{href:"#"} Separated link
+      / /.navbar-collapse
