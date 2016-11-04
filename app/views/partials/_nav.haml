@@ -1,51 +1,15 @@
-/ /.navbar-collapse-if user_signed_in?
-/ /.navbar-collapse%header
-%nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"} 
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{href: "#"} Brand
-    .collapse.navbar-collapse{:id=>"bs-example-navbar-collapse-1"}
-      %ul.nav.navbar-nav
-        %li.active
-          %a{href:"#"}  
-            %span.sr-only current
-        %li
-          %a{href:"#"} Link
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle"=>"dropdown", "role"=>"button", "aria-haspopup"=>"true", "aria-expanded"=>"false",href:"#"}
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{href:"#"} Action
-            %li
-              %a{href:"#"} Another action
-            %li
-              %a{href:"#"} Something else here
-            %li.divider{"role"=>"separator"}
-            %li
-              %a{href:"#"} Separated link
-            %li.divider{"role"=>"separator"}
-            %li
-              %a{href:"#"} One more separated link
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{href:"#"}Link
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle"=>"dropdown", "role"=>"button", "aria-haspopup"=>"true", "aria-expanded"=>"false", href: "#"} 
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{href:"#"} Action
-            %li
-              %a{href:"#"} Another action
-            %li
-              %a{href:"#"} Something else here
-            %li.divider{"role"=>"separator"}
-            %li
-              %a{href:"#"} Separated link
-      / /.navbar-collapse
+%nav.navbar.navbar-light.bg-faded
+  %a.navbar-brand{"href"=>"#"} Navbar
+  %ul.nav.navbar-nav
+    %li.nav-item.active
+      %a.nav-link{"href"=>"#"} Home <span class="sr-only">(current)</span></a>
+    %li.nav-item
+      %a.nav-link{"href"=>"#"} Link
+    %li.nav-item
+      %a.nav-link{"href"=>"#"} Link
+    %li.nav-item.dropdown
+      %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"supportedContentDropdown", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Dropdown
+      .dropdown-menu{"aria-labelledby"=>"supportedContentDropdown"}
+        %a.dropdown-item{"href"=>"#"} Action
+        %a.dropdown-item{"href"=>"#"} Another action
+        %a.dropdown-item{"href"=>"#"} Something else here
