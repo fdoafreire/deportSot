@@ -1,30 +1,31 @@
-.col-xs-18.col-sm-8.col-md-6.col-lg-4 
-  .box       
-    .big-padding
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .big-padding
+    .big-padding{"style"=>"border:solid #f7f7f9;"}
       %h1 Teams
-      %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+      %table.table.table-striped
         %thead
           %tr
+            %th #
             %th Name
-            %th Curso
-            %th User
-            %th Championship
-            %th
-            %th
-            %th
+            %th.hidden-sm-down Curso
+            %th.hidden-sm-down User
+            %th.hidden-sm-down Championship
             %th
         %tbody
           - @teams.each do |team|
             %tr
+              %td= team.id
               %td= team.name
-              %td= team.curso
-              %td= team.user.email
-              %td= team.championship.name
-              %td= link_to 'Show', team
-              %td= link_to 'Edit', edit_team_path(team)
-              %td= link_to "Players", controller: "/players", action: "index", :team_id =>  team.id
-              %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+              %td.hidden-sm-down= team.curso
+              %td.hidden-sm-down= team.user.email
+              %td.hidden-sm-down= team.championship.name
+              %td
+                .dropdown
+                  %button.btn.btn-secondary.dropdown-toggle{"type"=>"button","id"=>"actions","data-toggle"=>"dropdown","aria-haspopup"=>"true","aria-expanded"=>"false"} Actions
+                  .dropdown-menu{"aria-labelledby"=>"actions"}
+                    = link_to 'Show', team,:class=>"dropdown-item"
+                    = link_to 'Edit', edit_team_path(team),:class=>"dropdown-item"
+                    %a.dropdown-item{"href"=>"/players?team_id=#{team.id}"} Players
+                    = link_to 'Destroy', team, :method => :delete, :class=>"dropdown-item",:data => { :confirm => 'Are you sure?' }
       %br
-
-      = link_to 'New Team', new_team_path
+      %a.btn.btn-success{"href"=>"/teams/new"} <i class="fa fa-plus" aria-hidden="true"></i> Add

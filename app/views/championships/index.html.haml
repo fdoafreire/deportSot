@@ -1,30 +1,33 @@
-.col-xs-18.col-sm-8.col-md-6.col-lg-4 
-  .box       
-    .big-padding
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .big-padding
+    .big-padding{"style"=>"border:solid #f7f7f9;"}
       %h1 Championships
-      %table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+      %table.table.table-striped
         %thead
           %tr
+            %th #
             %th Name
-            %th Quantity min teams
-            %th Date initial inscription
-            %th Date end inscription
-            %th
-            %th
-            %th
+            %th.hidden-sm-down Quantity min teams
+            %th.hidden-sm-down Date initial inscription
+            %th.hidden-sm-down Date end inscription
             %th
         %tbody
           - @championships.each do |championship|
             %tr
+              %td= championship.id
               %td= championship.name
-              %td= championship.quantity_min_teams
-              %td= championship.date_initial_inscription
-              %td= championship.date_end_inscription
-              %td= link_to 'Show', championship
-              %td= link_to 'Edit', edit_championship_path(championship)
-              %td= link_to "Teams", controller: "/teams", action: "index", :championship_id =>  championship.id
-              %td= link_to 'Destroy', championship, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+              %td.hidden-sm-down= championship.quantity_min_teams
+              %td.hidden-sm-down= championship.date_initial_inscription
+              %td.hidden-sm-down= championship.date_end_inscription
+              %td
+                .dropdown
+                  %button.btn.btn-secondary.dropdown-toggle{"type"=>"button","id"=>"actions","data-toggle"=>"dropdown","aria-haspopup"=>"true","aria-expanded"=>"false"} Actions
+                  .dropdown-menu{"aria-labelledby"=>"actions"}
+                    = link_to 'Show', championship,:class=>"dropdown-item"
+                    = link_to 'Edit', edit_championship_path(championship),:class=>"dropdown-item"
+                    %a.dropdown-item{"href"=>"/teams?championship_id=#{championship.id}"} Teams
+                    %a.dropdown-item{"href"=>"/matches?championship_id=#{championship.id}"} Matches
+                    %a.dropdown-item{"href"=>"/matches-create?championship_id=#{championship.id}"} Programation
+                    = link_to 'Destroy', championship, :method => :delete, :class=>"dropdown-item",:data => { :confirm => 'Are you sure?' }
       %br
-
-      = link_to 'New Championship', new_championship_path
+      %a.btn.btn-success{"href"=>"/teams/new"} <i class="fa fa-plus" aria-hidden="true"></i> Add
