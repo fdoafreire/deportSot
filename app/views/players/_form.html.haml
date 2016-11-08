@@ -6,30 +6,40 @@
         - @player.errors.full_messages.each do |msg|
           %li= msg
 
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :first_name,class:"mdl-textfield__label grey-text"
-    = f.text_field :first_name,class:"mdl-textfield__input"
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :last_name,class:"mdl-textfield__label grey-text"
-    = f.text_field :last_name,class:"mdl-textfield__input"
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :telefono,class:"mdl-textfield__label grey-text"
-    = f.text_field :telefono,class:"mdl-textfield__input"
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :email,class:"mdl-textfield__label grey-text"
-    = f.text_field :email,class:"mdl-textfield__input"
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :movil,class:"mdl-textfield__label grey-text"
-    = f.text_field :movil,class:"mdl-textfield__input"
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :number_id,class:"mdl-textfield__label grey-text"
-    = f.text_field :number_id,class:"mdl-textfield__input"
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :team
-    %br
-    = f.collection_select(:team_id, @teams, :id, :name, {:prompt=>true}, {:class=>'form-control'})
-  .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-    = f.label :tshirt_number,class:"mdl-textfield__label grey-text"
-    = f.text_field :tshirt_number,class:"mdl-textfield__input"
-  .actions
-    = f.submit 'Save',class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+  .form-group.row
+    = f.label :first_name,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :first_name,class:"form-control"
+  .form-group.row
+    = f.label :last_name,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :last_name,class:"form-control"
+  .form-group.row
+    = f.label :telefono,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :telefono,class:"form-control"
+  .form-group.row
+    = f.label :email,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :email,class:"form-control"
+  .form-group.row
+    = f.label :movil,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :movil,class:"form-control"
+  .form-group.row
+    = f.label :number_id,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :number_id,class:"form-control"
+  .form-group.row
+    = f.label :team,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.collection_select(:team_id, @teams, :id, :name, {:prompt=>true}, {:class=>'form-control'})
+  .form-group.row
+    = f.label :tshirt_number,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.text_field :tshirt_number,class:"form-control"
+  .form-group.row
+    .offset-md-3.col-md-4
+      %button.btn.btn-success{"type"=>"submit"}
+        %i.fa.fa-floppy-o{"aria-hidden"=>"true"}
+        %span  Save player
