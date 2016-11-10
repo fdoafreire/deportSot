@@ -70,7 +70,7 @@ class MatchesController < ApplicationController
                  end
             end
         end
-        write_matches(@matchesr,@championship.matches_simultanius,days_game)
+        write_matches(@matchesr,@championship.matches_simultanius,@championship.id,days_game)
      else
         @count_matches_date = (@teams.count - 1) / 2
         @count_date = @teams.count 
@@ -99,7 +99,7 @@ class MatchesController < ApplicationController
                  end
             end
         end
-        write_matches(@matchesr,@championship.matches_simultanius,days_game,true)
+        write_matches(@matchesr,@championship.matches_simultanius,days_game,@championship.id,true)
      end
   end
 
@@ -179,7 +179,7 @@ class MatchesController < ApplicationController
     # - flag_even: Boolean - flag used to see if it is of type pair
     # - simultaneous_games: Integer - is contains quantity of simultaneous games
     # - days_game: array of string - it contains number days of week of game (parameter necessary to calculate date matche)
-    def write_matches (matches,simultaneous_games,days_game,flag_uneven=false)
+    def write_matches (matches,simultaneous_games,days_game,championship_id,flag_uneven=false)
         counter_date_number=1;
         counter_simultaneous_games=1
         date_game_matche = Time.parse(params[:date_start])
