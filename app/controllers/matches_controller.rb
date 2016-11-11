@@ -4,7 +4,9 @@ class MatchesController < ApplicationController
   # GET /matches
   # GET /matches.json
   def index
-    @matches = Match.all
+    championship_id=params[:championship_id]
+    @matches = Match.where(championship_id: championship_id)
+    @matches = Match.all if @matches.blank? && !params[:championship_id].present?
   end
 
   # GET /matches/1
@@ -70,7 +72,7 @@ class MatchesController < ApplicationController
                  end
             end
         end
-        write_matches(@matchesr,@championship.matches_simultanius,@championship.id,days_game)
+        write_matches(@matchesr,@championship.matches_simultanius,days_game,@championship.id)
      else
         @count_matches_date = (@teams.count - 1) / 2
         @count_date = @teams.count 
@@ -192,7 +194,7 @@ class MatchesController < ApplicationController
              matchr = col.split('-')
              local_id = matchr[0].to_i
              visit_id = matchr[1].to_i
-             match= Match.create(local_id:local_id,visitant_id:visit_id,match_date:date_game_matche,date_number:counter_date_number,championship_id:1)
+             match= Match.create(local_id:local_id,visitant_id:visit_id,match_date:date_game_matche,date_number:counter_date_number,championship_id:championship_id)
              counter_simultaneous_games += 1
              if counter_simultaneous_games > simultaneous_games
                 counter_simultaneous_games = 1

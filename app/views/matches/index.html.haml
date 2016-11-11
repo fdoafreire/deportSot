@@ -1,25 +1,26 @@
-.col-md-10
-  %h1 Listing matches
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Local
-        %th Visitant
-        %th Match date
-        %th Date number
-        %th Championship
-        %th Result
-        %th{:colspan =>2} Actions
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .big-padding
+    .big-padding{"style"=>"border:solid #f7f7f9;"}
+      %h1 Matches
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Local
+            %th Visitant
+            %th Match date
+            %th Date number
+            %th Championship
+            %th Result
+            %th Actions
 
-    %tbody
-      - @matches.each do |match|
-        %tr
-          %td= match.local.name
-          %td= match.visitant.name
-          %td= match.match_date
-          %td= match.date_number
-          %td= match.championship.name
-          %td= "#{match.goals_local_team} - #{match.goals_visitant_team}" 
-          %td= link_to 'Show', match
-          %td= link_to 'Details', 'details_match/' << match.id.to_s << '/new'
+        %tbody
+          - @matches.each do |match|
+            %tr
+              %td= match.local.name
+              %td= match.visitant.name
+              %td= match.match_date
+              %td= match.date_number
+              %td= match.championship.name
+              %td= "#{match.goals_local_team} - #{match.goals_visitant_team}" 
+              %td= link_to 'Details', 'details_match/' << match.id.to_s << '/new'
  

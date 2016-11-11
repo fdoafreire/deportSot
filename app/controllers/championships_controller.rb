@@ -28,7 +28,7 @@ class ChampionshipsController < ApplicationController
 
     respond_to do |format|
       if @championship.save
-        format.html { redirect_to @championship, notice: 'Championship was successfully created.' }
+        format.html { redirect_to '/championships', notice: 'Championship was successfully created.' }
         format.json { render :show, status: :created, location: @championship }
       else
         format.html { render :new }

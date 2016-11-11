@@ -53,6 +53,21 @@ class DetailsMatchesController < ApplicationController
     @details_match.minute    = params[:minute]
     respond_to do |format|
       if @details_match.save
+         if (@details_match.event_id == 3)
+            @match = Match.find(@details_match.match_id);
+            if (@match.local_id == @details_match.team_id)
+                goals=@match.goals_local_team
+                goals= 0 if goals.nil?
+                @match.goals_local_team = goals + 1;
+            else
+               if (@match.visitant_id == @details_match.team_id)
+                  goals=@match.goals_visitant_team
+                  goals= 0 if goals.nil?
+                  @match.goals_visitant_team = goals + 1;
+               end
+            end
+            @match.save
+         end  
         format.html { redirect_to '/details_match/' << @details_match.match_id.to_s << '/new', notice: 'Details match was successfully created.' }
         format.json { render :show, status: :created, location: @details_match }
       else
