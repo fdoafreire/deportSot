@@ -1,32 +1,36 @@
-%nav.navbar.navbar-light.bg-faded
-  %button.navbar-toggler.hidden-sm-up{"type"=>"button","data-toggle"=>"collapse", "data-target"=>"#navbar-header", "aria-controls"=>"navbar-header","aria-expanded"=>"false", "aria-label"=>"Toggle navigation"}
-  %a.navbar-brand{"href"=>"/"} DeporSoft
-  .collapse.navbar-toggleable-xs{"id"=>"navbar-header"}
-    %ul.nav.navbar-nav
-      %li.nav-item.dropdown
-        %a.nav-link.dropdown-toggle{"href"=>"/championships", "id"=>"MenuChampionship", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Campeonatos
-        .dropdown-menu{"aria-labelledby"=>"MenuChampionship","role"=>"menu"}
-          %a.dropdown-item{"href"=>"/championships"} List
-          %a.dropdown-item{"href"=>"/championships/new"} Create
-          %a.dropdown-item{"href"=>"/matches-create"} Programation
+-if user_signed_in?
+  %nav.navbar.navbar-light.bg-faded
+    %button.navbar-toggler.hidden-sm-up{"type"=>"button","data-toggle"=>"collapse", "data-target"=>"#navbar-header", "aria-controls"=>"navbar-header","aria-expanded"=>"false", "aria-label"=>"Toggle navigation"}
+    %a.navbar-brand{"href"=>"/"} DeporSoft
+    .collapse.navbar-toggleable-xs{"id"=>"navbar-header"}
+      %ul.nav.navbar-nav
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"href"=>"/championships", "id"=>"MenuChampionship", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Campeonatos
+          .dropdown-menu{"aria-labelledby"=>"MenuChampionship","role"=>"menu"}
+            %a.dropdown-item{"href"=>"/championships"} List
+            %a.dropdown-item{"href"=>"/championships/new"} Create
+            %a.dropdown-item{"href"=>"/matches-create"} Programation
 
-      %li.nav-item.dropdown
-        %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"MenuTeam", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Teams
-        .dropdown-menu{"aria-labelledby"=>"MenuTeam"}
-          %a.dropdown-item{"href"=>"/teams"} List
-          %a.dropdown-item{"href"=>"/teams/new"} Create
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"MenuTeam", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Teams
+          .dropdown-menu{"aria-labelledby"=>"MenuTeam"}
+            %a.dropdown-item{"href"=>"/teams"} List
+            %a.dropdown-item{"href"=>"/teams/new"} Create
 
-      %li.nav-item.dropdown
-        %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"Menustatistics", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Staticstics and Consultation
-        .dropdown-menu{"aria-labelledby"=>"Menustatistics"}
-          %a.dropdown-item{"href"=>"#"} Positions table
-          %a.dropdown-item{"href"=>"#"} Table of scorers
-          %a.dropdown-item{"href"=>"#"} Details matches
-          %a.dropdown-item{"href"=>"#"} warnings table
-          %a.dropdown-item{"href"=>"#"} History Player
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"Menustatistics", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Staticstics and Consultation
+          .dropdown-menu{"aria-labelledby"=>"Menustatistics"}
+            %a.dropdown-item{"href"=>"#"} Positions table
+            %a.dropdown-item{"href"=>"#"} Table of scorers
+            %a.dropdown-item{"href"=>"#"} Details matches
+            %a.dropdown-item{"href"=>"#"} warnings table
+            %a.dropdown-item{"href"=>"#"} History Player
 
-      %li.nav-item.dropdown
-        %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"MenuAdministration", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Administration
-        .dropdown-menu{"aria-labelledby"=>"MenuAdministration"}
-          %a.dropdown-item{"href"=>"#"} Users
-          %a.dropdown-item{"href"=>"#"} Events
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"MenuAdministration", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} Administration
+          .dropdown-menu{"aria-labelledby"=>"MenuAdministration"}
+            %a.dropdown-item{"href"=>"#"} Users
+            %a.dropdown-item{"href"=>"#"} Events
+      %ul.nav.navbar-nav.float-xs-right
+        %li.nav-item.dropdown
+          =link_to "Cerrar sesión",destroy_user_session_path,method: :delete,class:"nav-link dropdown-toggle"
