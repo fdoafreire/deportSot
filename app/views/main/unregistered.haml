@@ -1,9 +1,73 @@
-.full-height.row.middle-xs.white-text.center-xs.main-background.no-margin{style:"background-color:red;"}
-  .col-xs-18.col-sm-8.col-md-6.col-lg-4 
-    .box       
-      .big-padding.blue-transparent.text-left.white-text.border-grey
-        %h1.no-margin.bold.white-text.big-text Depor-Soft
-        %p.no-margin.light-blue-text Conectate y descrubre como va el torneo.
-        .top-space.light-blue-text
-          =render "devise/sessions/new"
- 
+.top-content.index.main-background
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2.text.titulo
+        %span.primera-parte.nombre
+          %span.primera-parte DEPOR
+          %span.segunda-parte SOFT
+        .description
+          %p Sistema para le control de la información de campeonatos deportivos. registrate ya!
+
+    .row
+      .col-sm-10.col-sm-offset-1.show-forms
+        %span.show-register-form.active Registro
+        %span.show-forms-divider /
+        %span.show-login-form Inciar sesión
+    .row.register-form
+      .col-sm-4.col-sm-offset-1
+        =render "devise/registrations/new"
+      .col-sm-6.forms-right-icons
+        .row
+          .col-sm-2.icon 
+            %i.fa.fa-pencil
+          .col-sm-10
+            %h3 Registro de información
+            %p DeporSoft te permite registrar los campeonatos, equipos jugadores y eventos del partido de una manera agradable y divertida
+        .row
+          .col-sm-2.icon
+            %i.fa.fa-commenting
+          .col-sm-10
+            %h3 Excelete soporte
+            %p Estamos para sevirte, nuestra compañia cuenta con soporte los 7 dias de las semana las 24 horas del día. Despreocupate y diviertete usando DeporSoft
+        .row
+          .col-sm-2.icon
+            %i.fa.fa-magic
+          .col-sm-10
+            %h3 Personalizable
+            %p ¿Tu campeonato tiene requerimientos especiales?. cuentanos que necesitas y dejanos ajustar DeporSoft para que el haga todo por ti.
+    .row.login-form
+      .col-sm-4.col-sm-offset-1
+        =render "devise/sessions/new"
+        .social-login
+          %p o ingresar con:
+          .social-login-buttons
+            %a.btn.btn-link-1{"href"=>"#"}
+              %i.fa.fa-facebook
+            %a.btn.btn-link-1{"href"=>"#"}
+              %i.fa.fa-google-plus
+      .col-sm-6.forms-right-icons
+        .row
+          .col-sm-2.icon 
+            %i.fa.fa-pencil
+          .col-sm-10
+            %h3 Registro de información
+            %p DeporSoft te permite registrar los campeonatos, equipos jugadores y eventos del partido de una manera agradable y divertida
+        .row
+          .col-sm-2.icon
+            %i.fa.fa-commenting
+          .col-sm-10
+            %h3 Excelete soporte
+            %p Estamos para sevirte, nuestra compañia cuenta con soporte los 7 dias de las semana las 24 horas del día. Despreocupate y diviertete usando DeporSoft
+        .row
+          .col-sm-2.icon
+            %i.fa.fa-magic
+          .col-sm-10
+            %h3 Personalizable
+            %p ¿Tu campeonato tiene requerimientos especiales?. cuentanos que necesitas y dejanos ajustar DeporSoft para que el haga todo por ti.
+%footer{"style"=>"background:black;"}
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        %h1 Contactenos
+        .footer-border
+        %p info@deporsotf.com 3112077126 - 15604172.

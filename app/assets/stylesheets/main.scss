@@ -3,12 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .main-background {
-	background-image:url(#{asset_path('background2.jpg')});
+	background-image:url(#{asset_path('background-main.png')});
 	background-size:cover;
 	background-repeat:none;
 }
 .main-background-interna {
-	background-image:url(#{asset_path('background.jpg')});
+	background-image:url(#{asset_path('background-page.jpg')});
 	background-size:cover;
 	background-repeat:none;
 }
@@ -29,19 +29,153 @@
 .text-center {
 	text-align:center;
 }
+.index {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #888;
+    line-height: 28px;
+    text-align: center;
+	padding: 60px 0 80px 0;
+	::-moz-selection { background: #42c5ea; color: #fff; text-shadow: none; }
+	::selection { background: #42c5ea; color: #fff; text-shadow: none; }
+
+	strong { font-weight: 500; }
+
+	a, a:hover, a:focus {
+		color: #42c5ea;
+		text-decoration: none;
+	    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+	}
+
+	h1, h2 {
+		margin-top: 10px;
+		font-size: 34px;
+	    font-weight: 100;
+	    color: #555;
+	    line-height: 48px;
+	}
+
+	h3 {
+		font-size: 20px;
+	    font-weight: 300;
+	    color: #555;
+	    line-height: 26px;
+	}
+
+	img { max-width: 100%; }
 
 
-.glyphicon.spinning {
-    animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
+    .text { color: #fff; }
+	.text h1 { color: #fff; }
+	.description a { color: #fff; border-bottom: 1px dotted #fff; }
+	.description a:hover, .description a:focus { border: 0; }
+
+	.btn-link-1 {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		margin: 5px;
+		padding: 0;
+		background: #555;
+		background: rgba(0, 0, 0, 0.3);
+		font-size: 20px;
+	    line-height: 40px;
+	    color: #fff;
+	    -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
+	}
+	.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active {
+		outline: 0; opacity: 0.6; 
+		background: #555; background: rgba(0, 0, 0, 0.3); color: #fff;
+	}
+
+	.new_user .btn-main, .login-form .btn-main{background:#17CEB2;color:#fff;}
+
+
+	/***** Top content *****/
+
+	.forms-right-icons i.fa {
+		background: #17CEB2;
+		padding: 10px;
+	    -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
+	}
+
+
+	.titulo .nombre {font-size:34px;font-weight: bold;	}
+	.titulo .segunda-parte {color: #17CEB2;margin-left: -10px;}
+
+	.show-forms { padding-top: 40px; font-size: 20px; color: #fff; line-height: 26px; text-align: left; }
+	.show-register-form, .show-forms-divider, .show-login-form { opacity: 0.6; }
+	.show-register-form, .show-login-form {
+		cursor: pointer;
+		-o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+	}
+	.show-register-form.active, .show-login-form.active,
+	.show-register-form:hover, .show-login-form:hover { opacity: 1; }
+
+	.login-form { display: none; }
+
+	.r-form { padding-top: 40px; }
+	.r-form .form-group { margin-bottom: 25px; }
+	.r-form textarea { height: 100px; }
+	.r-form .input-error { border-color: #42c5ea; }
+
+	.l-form { padding-top: 40px; }
+	.l-form .form-group { margin-bottom: 25px; }
+	.l-form .input-error { border-color: #42c5ea; }
+
+	.forms-right-icons .row { padding-bottom: 15px; }
+	.forms-right-icons { color: #fff; text-align: left; }
+	.forms-right-icons h3 { margin-top: 0; color: #fff;font-weight: bold }
+	.forms-right-icons .icon { text-align: right; font-size: 30px; line-height: 34px; }
+
+	.social-login { margin-top: 35px; color: #fff; }
+	.social-login-buttons { margin-top: 20px; }
 }
 
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
+/***** Footer *****/
+
+footer { padding-bottom: 70px; color: #fff; }
+
+footer .footer-border {
+	width: 200px;
+	margin: 0 auto;
+	padding-bottom: 30px;
+	border-top: 1px solid #fff;
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+footer a { color: #fff; border-bottom: 1px dotted #fff; }
+footer a:hover, footer a:focus { color: #fff; border: 0; }
+
+
+/***** Media queries *****/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	
+	.forms-right-icons .icon { font-size: 22px; }
+	
 }
+
+@media (max-width: 767px) {
+	
+	.show-forms, .forms-right-icons, .forms-right-icons .icon { text-align: center; }
+	.forms-right-icons .icon { padding-top: 10px; }
+	.forms-right-icons h3 { margin-top: 15px; }
+	
+}
+
+@media (max-width: 415px) {
+	
+	h1, h2 { font-size: 28px; }
+
+}
+
+.navbar{background:#17CEB2}
+
+.navbar-dark .navbar-nav .nav-link {
+    color:white
+}
+

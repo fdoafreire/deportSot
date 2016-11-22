@@ -18,29 +18,3 @@ html,body{
 .top-space{
 	margin-top:1em;
 }
-.mdl-navigation ul{
-     list-style: none;
-    list-style-image: none;
-    font-family: "Roboto","Helvetica","Arial",sans-serif;
-    font-size:1.4em;
-    padding:0px;
-
-}
-.mdl-navigation ul li {
-   border-top: 1px solid #24323d;
-   border-bottom: 1px solid #3f566a;
-}
-.mdl-layout__drawer {
-	background-color: #374c5d 
-}
-
-.mdl-navigation ul li a{
-   display: block;
-   color: #f0f0f0;
-   padding: 10px 15px;
-   text-decoration:none;
- }
-
-.mdl-navigation ul li a:hover {
-    background-color: rgba(31, 192, 142, 0.8);
-}
