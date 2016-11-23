@@ -1,14 +1,25 @@
   <%= form_tag({controller: "matches", action: "generate"}, method: "post" ) do |f| %>
-  <div class="form-group">
-    <%= label_tag(:championship_id, "championship:") %><br>
-    <% options = @championships.map { |city| [city.name, city.id] } %>
-    <%= select_tag(:championship_id,options_for_select(options,@championship_id),:class=>"form-control",:prompt => 'Please select',:selected=>@championship_id) %>
-  </div>
-  <div class="form-group">
-    <%= label_tag(:date_start, "Date start:") %>
-    <%= text_field_tag(:date_start,nil,:class => "form-control") %>
-  </div>
-  <div class="form-group">
-     <%= submit_tag("Generar programación",:class=>"btn btn-success") %>
-  </div>
-<% end %>
+    <div class="form-group row">
+      <%= label_tag(:championship_id, "championship:",:class => "col-sm-2 col-xs-12 col-form-label") %><br>
+      <div class="col-sm-3 col-xs-12">
+        <% options = @championships.map { |city| [city.name, city.id] } %>
+        <%= select_tag(:championship_id,options_for_select(options,@championship_id),:class=>"form-control",:prompt => 'Please select',:selected=>@championship_id) %>
+      </div> 
+    </div>
+    <div class="form-group row">
+      <%= label_tag(:date_start, "Date start:",:class => "col-sm-2 col-xs-12 col-form-label") %>
+      <div class="col-sm-3 col-xs-12">
+        <%= text_field_tag(:date_start,nil,:class => "form-control") %>
+      </div>
+    </div>
+    <div class="form-group row">
+         <div class="col-md-offset-2 col-sm-4">
+           <%= submit_tag("Generate",:class=>"btn btn-success") %>
+         </div>
+    </div>
+    <div class="form-group row">
+         <div class="col-md-offset-2 col-sm-4">
+           <a href="/championships" class="btn btn-secondary active"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back</a>
+         </div>
+    </div>
+  <% end %>
