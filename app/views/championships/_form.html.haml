@@ -1,40 +1,44 @@
 = form_for @championship do |f|
+  %h2 New championship
   - if @championship.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@championship.errors.count, "error")} prohibited this championship from being saved:"
+      %h3= "#{pluralize(@championship.errors.count, "error")} prohibited this championship from being saved:"
       %ul
         - @championship.errors.full_messages.each do |msg|
           %li= msg
   .form-group.row 
-    = f.label :name,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :name,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :name,class:"form-control"
   .form-group.row
-    = f.label :quantity_min_teams,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :quantity_min_teams,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.number_field :quantity_min_teams,class:"form-control"
   .form-group.row
-    = f.label :date_initial_inscription,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :date_initial_inscription,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :date_initial_inscription,class:"form-control"
   .form-group.row
-    = f.label :date_end_inscription,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :date_end_inscription,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :date_end_inscription,class:"form-control"
   .form-group.row
-    = f.label :match_duration,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :match_duration,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :match_duration,class:"form-control"
   .form-group.row
-    = f.label :matches_simultanius,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :matches_simultanius,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :matches_simultanius,class:"form-control"
   .form-group.row
-    = f.label :game_days,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    = f.label :game_days,class:"col-sm-3 col-md-2 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :game_days,class:"form-control"
   .form-group.row
-    .offset-md-3.col-md-4
+    .offset-md-2.col-md-4
       %button.btn.btn-success{"type"=>"submit"}
         %i.fa.fa-floppy-o{"aria-hidden"=>"true"}
         %span  Save team
+  .form-group.row
+    .offset-md-2.col-md-4
+      %a.btn.btn-secondary.active{"href"=>"/championships"} <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back 

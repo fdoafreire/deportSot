@@ -11,9 +11,10 @@ body{
 	font-family: 'Roboto', sans-serif !important;
 }
 .main-background-form {
-	background-image:url(#{asset_path('bck30.jpg')});
+	background-image:url(#{asset_path('bck1.jpg')});
 	background-size:cover;
 	background-repeat:none;
+	height: 100%;
 }
 .main-background-interna {
 	background-image:url(#{asset_path('bck21.png')});
@@ -195,4 +196,11 @@ h1, h2 {
     font-weight: 100;
     color: #555;
     line-height: 48px;
+}
+
+.main-background-form label, .main-background-form h2  {
+	color:white;
+}
+.main-background-form h2  {
+	font-weight: bold;
 }
