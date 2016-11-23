@@ -13,10 +13,14 @@
 
   <body>
 
-     <div class="mdl-layout mdl-js-layout">
+     <div class="mdl-layout mdl-js-layout main-background-form">
         <%= render "partials/nav" %>
 <!--        <p style="<%= 'display:none;' if notice.nil? && alert.nil?%>"><%= notice %> <%= alert %></p> -->
-        <%= yield %>
+        <div class="main-background-form">
+          <div class="wrapper-content">
+            <%= yield %>
+          </div>
+        </div>
     </div> 
   </body>
 </html>

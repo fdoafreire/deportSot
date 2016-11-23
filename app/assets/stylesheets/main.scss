@@ -3,12 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .main-background {
-	background-image:url(#{asset_path('background-main.png')});
+	background-image:url(#{asset_path('bck21.png')});
+	background-size:cover;
+	background-repeat:none;
+}
+body{
+	font-family: 'Roboto', sans-serif !important;
+}
+.main-background-form {
+	background-image:url(#{asset_path('bck30.jpg')});
 	background-size:cover;
 	background-repeat:none;
 }
 .main-background-interna {
-	background-image:url(#{asset_path('background-page.jpg')});
+	background-image:url(#{asset_path('bck21.png')});
 	background-size:cover;
 	background-repeat:none;
 }
@@ -89,20 +97,20 @@
 		background: #555; background: rgba(0, 0, 0, 0.3); color: #fff;
 	}
 
-	.new_user .btn-main, .login-form .btn-main{background:#17CEB2;color:#fff;}
+	.new_user .btn-main, .login-form .btn-main{background:#0271D0;color:#fff;}
 
 
 	/***** Top content *****/
 
 	.forms-right-icons i.fa {
-		background: #17CEB2;
+		background: #0271D0;
 		padding: 10px;
 	    -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
 	}
 
 
 	.titulo .nombre {font-size:34px;font-weight: bold;	}
-	.titulo .segunda-parte {color: #17CEB2;margin-left: -10px;}
+	.titulo .segunda-parte {color: #0271D0;margin-left: -10px;}
 
 	.show-forms { padding-top: 40px; font-size: 20px; color: #fff; line-height: 26px; text-align: left; }
 	.show-register-form, .show-forms-divider, .show-login-form { opacity: 0.6; }
@@ -173,9 +181,18 @@ footer a:hover, footer a:focus { color: #fff; border: 0; }
 
 }
 
-.navbar{background:#17CEB2}
+.navbar{background:#091A40}
 
 .navbar-dark .navbar-nav .nav-link {
     color:white
 }
 
+.segunda-parte {color: #0271D0;margin-left: -5px;}
+
+h1, h2 {
+	margin-top: 10px;
+	font-size: 34px;
+    font-weight: 100;
+    color: #555;
+    line-height: 48px;
+}

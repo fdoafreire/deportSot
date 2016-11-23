@@ -1,7 +1,10 @@
 -if user_signed_in?
   %nav.navbar.navbar-dark.bg-faded
     %button.navbar-toggler.hidden-sm-up{"type"=>"button","data-toggle"=>"collapse", "data-target"=>"#navbar-header", "aria-controls"=>"navbar-header","aria-expanded"=>"false", "aria-label"=>"Toggle navigation"}
-    %a.navbar-brand{"href"=>"/"} DeporSoft
+    %a.navbar-brand{"href"=>"/","style"=>'font-w'}
+      %span.nombre
+        %span.primera-parte DEPOR
+        %span.segunda-parte SOFT
     .collapse.navbar-toggleable-xs{"id"=>"navbar-header"}
       %ul.nav.navbar-nav
         %li.nav-item.dropdown
@@ -33,4 +36,6 @@
             %a.dropdown-item{"href"=>"#"} Events
       %ul.nav.navbar-nav.float-xs-right
         %li.nav-item.dropdown
-          =link_to "Cerrar sesión",destroy_user_session_path,method: :delete,class:"nav-link dropdown-toggle"
+          %a.nav-link.dropdown-toggle{"href"=>"http://example.com", "id"=>"MenuUser", "data-toggle"=>"dropdown", "aria-haspopup"=>"true","aria-expanded"=>"false"} #{current_user.fullname}
+          .dropdown-menu{"aria-labelledby"=>"MenuUser"}
+            =link_to "Cerrar sesión",destroy_user_session_path,method: :delete,class:"dropdown-item"
