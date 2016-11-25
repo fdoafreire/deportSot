@@ -6,6 +6,7 @@
         %thead
           %tr
             %th #
+            %th
             %th Name
             %th.hidden-sm-down Curso
             %th.hidden-sm-down User
@@ -15,6 +16,8 @@
           - @teams.each do |team|
             %tr
               %td= team.id
+              %td
+                .avatar-team{style:"background-image:url(#{team.avatar.url(:thumb)});"}
               %td= team.name
               %td.hidden-sm-down= team.curso
               %td.hidden-sm-down= team.user.email

@@ -204,3 +204,13 @@ h1, h2 {
 .main-background-form h2  {
 	font-weight: bold;
 }
+td {
+	vertical-align: middle !important;
+}
+
+.avatar-team{
+	height: 60px;
+	width:60px;
+	border-radius: 50%;
+	background-size: cover;
+}
