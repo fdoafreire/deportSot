@@ -36,7 +36,7 @@ end
 gem 'sass-rails', '~> 5.0' 
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails', '~> 4.7'
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 group :development, :test do
     gem 'railroady'
 end
