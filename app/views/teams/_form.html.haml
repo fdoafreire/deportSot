@@ -23,9 +23,9 @@
     .col-sm-4.col-xs-12
       = f.collection_select(:championship_id, @championships, :id, :name, {:prompt=>true}, {:class=>'form-control'})
   .form-group.row
-    = f.label :avatar,class:"col-sm-2 col-xs-12 col-form-label"
+    = f.label :escudo,class:"col-sm-2 col-xs-12 col-form-label"
     .col-sm-4.col-xs-12
-      = f.file_field :avatar,class:"form-control"
+      = f.file_field :escudo,class:"form-control"
   .form-group.row
     .offset-sm-2.col-sm-4
       %button.btn.btn-success{"type"=>"submit"}

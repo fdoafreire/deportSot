@@ -17,7 +17,7 @@
             %tr
               %td= team.id
               %td
-                .avatar-team{style:"background-image:url(#{team.avatar.url(:thumb)});"}
+                .avatar-team{style:"background-image:url(#{team.escudo.url(:medium)});"}
               %td= team.name
               %td.hidden-sm-down= team.curso
               %td.hidden-sm-down= team.user.email

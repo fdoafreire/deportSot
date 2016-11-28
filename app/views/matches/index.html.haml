@@ -5,6 +5,7 @@
       %table.table.table-striped
         %thead
           %tr
+            %th #
             %th Local
             %th Visitant
             %th Match date
@@ -16,6 +17,7 @@
         %tbody
           - @matches.each do |match|
             %tr
+              %td= match.id
               %td= match.local.name
               %td= match.visitant.name
               %td= match.match_date
@@ -23,4 +25,5 @@
               %td= match.championship.name
               %td= "#{match.goals_local_team} - #{match.goals_visitant_team}" 
               %td= link_to 'Details', 'details_match/' << match.id.to_s << '/new'
+      = will_paginate @matches,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer
  

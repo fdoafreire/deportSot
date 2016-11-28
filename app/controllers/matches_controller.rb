@@ -7,6 +7,9 @@ class MatchesController < ApplicationController
     championship_id=params[:championship_id]
     @matches = Match.where(championship_id: championship_id)
     @matches = Match.all if @matches.blank? && !params[:championship_id].present?
+    page = params[:page]
+    page = 1 if page.blank? && !params[:page].present?
+    @matches = @matches.paginate(:page => page, :per_page => 5)
   end
 
   # GET /matches/1
@@ -103,6 +106,7 @@ class MatchesController < ApplicationController
         end
         write_matches(@matchesr,@championship.matches_simultanius,days_game,@championship.id,true)
      end
+     redirect_to '/matches?championship_id=' << @championship.id.to_s, notice: 'Programation was successfully created.'
   end
 
 
@@ -159,7 +163,7 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start,:goals_local_team,:goals_visitant_team)
+      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start,:goals_local_team,:goals_visitant_team,:page)
     end
     # function that calculates the next play date
     # Params:

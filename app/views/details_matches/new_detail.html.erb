@@ -6,10 +6,11 @@
 	          <div class="col-md-8">
 		          <div class="col-md-4">
 		            <div>
-		             <%= image_tag("chelsea.png", size: "100x100", alt: "Chelsea",class:"img-responsive center-element") %>
+		              <div class="avatar-team details center-element" style="background-image:url(<%=@match.local.escudo.url(:medium)%>);">
+		              </div>
 		            </div>
 		            <span>
-		             <h2 class="text-center">Chelsea</h2>
+		             <h2 class="text-center"><%=@match.local.name%></h2>
 		            </span> 
 		           </div>
 		          <div class="col-md-4" style="text-align:center;">
@@ -17,15 +18,19 @@
 		             <h2>VS</h2>
 		            </div>
 		            <div>
-		             <h2> <%= @match.goals_local_team.to_s << '-' << @match.goals_visitant_team.to_s %></h2>
+		             <h2> <%= @match.goals_local_team.to_s.blank? ? 0.to_s : @match.goals_local_team.to_s %> 
+		                  <%=  '-'  %>
+		                  <%= @match.goals_visitant_team.to_s.blank? ? 0.to_s : @match.goals_visitant_team.to_s %> 
+		            </h2>
 		            </div>
 		          </div>
 		          <div class="col-md-4">
 		            <div>
-		             <%= image_tag("chelsea.png", size: "100x100", alt: "Chelsea",class:"img-responsive center-element") %>
+		              <div class="avatar-team details center-element" style="background-image:url(<%=@match.visitant.escudo.url(:medium)%>);">
+		              </div>
 		            </div>
 		            <span>
-		             <h2 class="text-center">Chelsea</h2>
+		             <h2 class="text-center"><%=@match.visitant.name%></h2>
 		            </span> 
 		           </div>
 		      </div>

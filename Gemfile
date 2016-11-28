@@ -33,10 +33,12 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+gem 'will_paginate-bootstrap4'
 gem 'sass-rails', '~> 5.0' 
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails', '~> 4.7'
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem "paperclip", "~> 5.0.0"
+gem 'cocaine'
 group :development, :test do
     gem 'railroady'
 end

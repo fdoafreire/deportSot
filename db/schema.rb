@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 20161125145453) do
     t.string   "movil"
     t.string   "number_id"
     t.integer  "team_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "tshirt_number"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
     t.index ["tshirt_number", "team_id"], name: "index_players_on_tshirt_number_and_team_id", using: :btree
   end
@@ -94,10 +94,10 @@ ActiveRecord::Schema.define(version: 20161125145453) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "championship_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "escudo_file_name"
+    t.string   "escudo_content_type"
+    t.integer  "escudo_file_size"
+    t.datetime "escudo_updated_at"
     t.index ["championship_id"], name: "index_teams_on_championship_id", using: :btree
     t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
   end
