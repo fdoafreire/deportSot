@@ -1,4 +1,4 @@
-= form_for @player do |f|
+= form_for @player,:html => { :multipart => true } do |f|
   - if @player.errors.any?
     #error_explanation
       %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
@@ -38,6 +38,11 @@
     = f.label :tshirt_number,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
     .col-sm-6.col-xs-12.col-md-4
       = f.text_field :tshirt_number,class:"form-control"
+  .form-group.row
+    = f.label :foto,class:"col-sm-4 col-md-3 col-xs-12 col-form-label"
+    .col-sm-6.col-xs-12.col-md-4
+      = f.file_field :foto,class:"form-control"
+
   .form-group.row
     .offset-md-3.col-md-4
       %button.btn.btn-success{"type"=>"submit"}

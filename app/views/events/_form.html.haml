@@ -6,8 +6,16 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+  .form-group.row
+    = f.label :name,class:"col-sm-2 col-xs-12 col-form-label"
+    .col-sm-4.col-xs-12
+      = f.text_field :name,class:"form-control"
+  .form-group.row
+    = f.label :is_goal,class:"col-sm-2 col-xs-12 col-form-label"
+    .col-sm-4.col-xs-12
+      = f.check_box :is_goal,class:"form-control"
+  .form-group.row
+    .offset-sm-2.col-sm-4
+      %button.btn.btn-success{"type"=>"submit"}
+        %i.fa.fa-floppy-o{"aria-hidden"=>"true"}
+        %span  Save event

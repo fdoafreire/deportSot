@@ -16,5 +16,4 @@
 //= require tether
 //= require bootstrap
 //= require functions-form
-//= require turbolinks
 //= require_tree .

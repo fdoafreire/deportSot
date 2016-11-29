@@ -6,8 +6,8 @@
         %thead
           %tr
             %th #
-            %th First name
-            %th Last name
+            %th 
+            %th Names
             %th.hidden-sm-down Telefono
             %th.hidden-sm-down Email
             %th.hidden-sm-down Movil
@@ -19,8 +19,11 @@
           - @players.each do |player|
             %tr
               %td= player.id
-              %td= player.first_name
-              %td= player.last_name
+              %td
+                .avatar-team{style:"background-image:url(#{player.foto.url(:thumb)});"}
+              %td
+                = player.first_name
+                = player.last_name
               %td.hidden-sm-down= player.telefono
               %td.hidden-sm-down= player.email
               %td.hidden-sm-down= player.movil

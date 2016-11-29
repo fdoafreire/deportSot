@@ -36,7 +36,7 @@ class DetailsMatchesController < ApplicationController
   def new_detail
     @events        = Event.all
     @match         = Match.find(params[:match_id])
-    @details_matches = DetailsMatch.where(match_id: params[:match_id])
+    @details_matches = DetailsMatch.where(match_id: params[:match_id]).order('id desc')
   end
   # GET /details_matches/1/edit
   def edit

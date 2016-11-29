@@ -36,14 +36,14 @@
 		      </div>
 	          <div class="col-md-2"></div>
 	        </div>
+	        <div class="events row col-md-4 offset-md-4 " style="max-height: 100px;overflow-y: scroll;">
 	        <% @details_matches.each do |detail_match| %>
-		        <div class="row col-md-12">
-		          <div class="event-wrap" style="margin-left:auto;margin-right:auto">
+		          <div class="event-wrap text-center white-text" style="margin-left:auto;margin-right:auto">
 		             <span class="event-minute"><%= detail_match.minute %>'</span>
 		             <span class="event-text"><%= detail_match.event.name %> <%= detail_match.player.last_name %> (<%= detail_match.team.name %>).</span>
 		          </div>
-		        </div>
 	        <% end %>
+	        </div>
          </div>
 	      <div class="col-md-12 row" >
  	         <div class="col-md-4" ></div>
