@@ -9,7 +9,7 @@ class MatchesController < ApplicationController
     @matches = Match.all if @matches.blank? && !params[:championship_id].present?
     page = params[:page]
     page = 1 if page.blank? && !params[:page].present?
-    @matches = @matches.paginate(:page => page, :per_page => 5)
+    @matches = @matches.paginate(:page => page, :per_page => 10)
   end
 
   # GET /matches/1
@@ -18,6 +18,16 @@ class MatchesController < ApplicationController
   end
 
   def details_matches_path
+  end
+  # GET /matches/:id/close
+  def close 
+      @match = Match.find(params[:match_id])
+      @match.status = 2
+      @match.goals_local_team = 0 if @match.goals_local_team.nil?
+      @match.goals_visitant_team = 0 if @match.goals_visitant_team.nil?
+      @match.save
+      redirect_to '/matches?championship_id=' << @match.championship_id.to_s, notice: 'Match was successfully closed.'
+
   end
 
 
@@ -163,7 +173,7 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start,:goals_local_team,:goals_visitant_team,:page)
+      params.require(:match).permit(:local_id, :visitant_id, :match_date, :date_number, :championship_id, :date_start,:goals_local_team,:goals_visitant_team,:page,:match_id)
     end
     # function that calculates the next play date
     # Params:

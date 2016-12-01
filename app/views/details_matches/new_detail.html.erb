@@ -36,7 +36,11 @@
 		      </div>
 	          <div class="col-md-2"></div>
 	        </div>
-	        <div class="events row col-md-4 offset-md-4 " style="max-height: 100px;overflow-y: scroll;">
+	        <%if @match.status == 0 || @match.status == 1 %>
+	          <div class="events row col-md-4 offset-md-4 " style="max-height: 100px;overflow-y: scroll;">
+	        <% else %>
+	          <div class="events row col-md-4 offset-md-4 ">
+	        <% end %>
 	        <% @details_matches.each do |detail_match| %>
 		          <div class="event-wrap text-center white-text" style="margin-left:auto;margin-right:auto">
 		             <span class="event-minute"><%= detail_match.minute %>'</span>
@@ -45,6 +49,7 @@
 	        <% end %>
 	        </div>
          </div>
+         <% if @match.status == 0 || @match.status == 1 %>
 	      <div class="col-md-12 row" >
  	         <div class="col-md-4" ></div>
 	         <div class="col-md-4" >
@@ -78,10 +83,11 @@
 				     <%= submit_tag("Save event local",:class=>"btn btn-success center-element") %>
 				   </div>
 				   <div class="form-group">
-				     <%= link_to "Close match", '/matches/' << @match.id.to_s << '/closed', id: "close_match", class: "btn btn-danger center-element" %>
+				     <%= link_to "Close match", '/matches/' << @match.id.to_s << '/close', id: "close_match", class: "btn btn-danger center-element" %>
 				   </div>
 			      </fieldset>
 	           <% end %>
-	      </div>
-	      <div class="col-md-4"></div>
-</div>
+	         </div>
+	         <div class="col-md-4"></div>
+          </div>
+          <% end %>

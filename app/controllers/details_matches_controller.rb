@@ -41,7 +41,6 @@ class DetailsMatchesController < ApplicationController
   # GET /details_matches/1/edit
   def edit
   end
-
   # POST /details_matches
   # POST /details_matches.json
   def create_detail
@@ -51,10 +50,14 @@ class DetailsMatchesController < ApplicationController
     @details_match.player_id = params[:player_id]
     @details_match.event_id  = params[:event_id]
     @details_match.minute    = params[:minute]
+    @match = Match.find(@details_match.match_id)
+    if @match.status == 0 
+       @match.status = 1
+       @match.save
+    end
     respond_to do |format|
       if @details_match.save
          if (@details_match.event_id == 3)
-            @match = Match.find(@details_match.match_id);
             if (@match.local_id == @details_match.team_id)
                 goals=@match.goals_local_team
                 goals= 0 if goals.nil?

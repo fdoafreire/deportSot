@@ -12,6 +12,7 @@
             %th Date number
             %th Championship
             %th Result
+            %th status
             %th Actions
 
         %tbody
@@ -23,7 +24,14 @@
               %td= match.match_date
               %td= match.date_number
               %td= match.championship.name
-              %td= "#{match.goals_local_team} - #{match.goals_visitant_team}" 
+              %td= "#{match.goals_local_team} - #{match.goals_visitant_team.to_s.blank? && !match.goals_local_team.to_s.blank? ? 0.to_s : match.goals_visitant_team.to_s}" 
+              - case match.status
+                - when 0 
+                  %td= "Programmed"   
+                - when 1 
+                  %td= "In game"   
+                - when 2 
+                  %td= "Finalized"   
               %td= link_to 'Details', 'details_match/' << match.id.to_s << '/new'
       = will_paginate @matches,:renderer => WillPaginate::ActionView::BootstrapLinkRenderer
  

@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   
   get  'details_match/:match_id/new'    => 'details_matches#new_detail'
   post 'details_match/:match_id/create' => 'details_matches#create_detail'
-
+  get  'matches/:match_id/close' => 'matches#close'
   get  'search-players' => 'players#search'
+  get  'staticstics/table-positions' => 'staticstics#table_positions'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
