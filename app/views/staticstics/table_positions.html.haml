@@ -1,0 +1,33 @@
+.col-xs-12.col-sm-12.col-md-12.col-lg-12{"style"=>"background: white;"}
+  .big-padding
+    .big-padding{"style"=>"border:solid #f7f7f9;"}
+      %h1 Matches
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Name
+            %th PG
+            %th PE
+            %th PP
+            %th GF
+            %th GC
+            %th GD
+            %th Points
+
+        %tbody
+          - position = 1
+          - @scores.each do |score|
+            %tr
+              %td= position
+              %td= score.Name
+              %td= score.PG
+              %td= score.PE
+              %td= score.PP
+              %td= score.GF
+              %td= score.GC
+              %td= score.GD
+              %td= score.Puntos
+              - position = position + 1
+
+ 

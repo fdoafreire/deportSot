@@ -1,7 +1,7 @@
 
 class StaticsticsController < ApplicationController
     def table_positions
-      @scores = Report::TableScore.scores
+      @scores =  Report::TableScore.score
     end
   end
 
