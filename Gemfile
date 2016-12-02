@@ -39,7 +39,6 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-rails', '~> 4.7'
 gem "paperclip", "~> 5.0.0"
 gem 'cocaine'
-gem 'scenic'
 group :development, :test do
     gem 'railroady'
 end
