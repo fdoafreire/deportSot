@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get  'matches/:match_id/close' => 'matches#close'
   get  'search-players' => 'players#search'
   get  'staticstics/table-positions' => 'staticstics#table_positions'
+  get  'staticstics/table-events' => 'staticstics#table_players_goals'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,23 @@
+.col-xs-12.col-sm-12.col-md-12.col-lg-12{"style"=>"background: white;"}
+  .big-padding
+    .big-padding{"style"=>"border:solid #f7f7f9;"}
+      %h1 Matches
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Name
+            %th Equipo
+            %th Cantidad
+
+        %tbody
+          - position = 1
+          - @events.each do |event|
+            %tr
+              %td= position
+              %td= event.nombre
+              %td= event.equipo
+              %td= event.cantidad
+              - position = position + 1
+
+ 
