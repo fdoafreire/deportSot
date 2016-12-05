@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202210534) do
+ActiveRecord::Schema.define(version: 20161205162908) do
 
   create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -67,13 +67,18 @@ ActiveRecord::Schema.define(version: 20161202210534) do
     t.string   "movil"
     t.string   "number_id"
     t.integer  "team_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "tshirt_number"
     t.string   "foto_file_name"
     t.string   "foto_content_type"
     t.integer  "foto_file_size"
     t.datetime "foto_updated_at"
+    t.integer  "status",                  limit: 1, default: 0
+    t.integer  "yellow_cards",            limit: 1, default: 0
+    t.integer  "red_cards",               limit: 1, default: 0
+    t.integer  "penalized_matches",       limit: 1, default: 0
+    t.integer  "matches_without_playing", limit: 1, default: 0
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
     t.index ["tshirt_number", "team_id"], name: "index_players_on_tshirt_number_and_team_id", using: :btree
   end
