@@ -26,7 +26,7 @@ class PlayersController < ApplicationController
   end
 
   def search 
-    @players = Player.order(:first_name,:last_name).where("(first_name like ? or id = ? or tshirt_number = ? or last_name like ?) and team_id=?","%#{params[:term]}%",params[:term],params[:term],"%#{params[:term]}%",params[:team_id])
+    @players = Player.order(:first_name,:last_name).where("(first_name like ? or id = ? or tshirt_number = ? or last_name like ?) and team_id=? and status=0","%#{params[:term]}%",params[:term],params[:term],"%#{params[:term]}%",params[:team_id])
     render json: @players
   end
 

@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require tether
 //= require bootstrap
 //= require functions-form
 //= require_tree .

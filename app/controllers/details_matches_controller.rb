@@ -57,20 +57,47 @@ class DetailsMatchesController < ApplicationController
     end
     respond_to do |format|
       if @details_match.save
-         if (@details_match.event_id == 3)
-            if (@match.local_id == @details_match.team_id)
+         case @details_match.event_id 
+           when 1
+            @player=Player.find(@details_match.player_id)
+            if (find_yellow_cards)
+                @details_match = DetailsMatch.new
+                @details_match.match_id  = params[:match_id]
+                @details_match.team_id   = params[:team_id]
+                @details_match.player_id = params[:player_id]
+                @details_match.event_id  = 2
+                @details_match.minute    = params[:minute]
+                @details_match.save
+                
+                @player.status                  = 1
+                @player.yellow_cards            = 0
+                @player.penalized_matches       = 1
+                @player.matches_without_playing = 0
+            else
+                @player.yellow_cards = @player.yellow_cards + 1
+            end
+            @player.save
+           when 2
+                @player.status = 2
+                @player.yellow_cards = 0
+                @player.red_cards = 1
+                @player.penalized_matches = 2
+                @player.matches_without_playing = 0
+                @player.save
+           when 3
+              if (@match.local_id == @details_match.team_id)
                 goals=@match.goals_local_team
                 goals= 0 if goals.nil?
                 @match.goals_local_team = goals + 1;
-            else
-               if (@match.visitant_id == @details_match.team_id)
-                  goals=@match.goals_visitant_team
-                  goals= 0 if goals.nil?
-                  @match.goals_visitant_team = goals + 1;
-               end
-            end
-            @match.save
-         end  
+              else
+                if (@match.visitant_id == @details_match.team_id)
+                   goals=@match.goals_visitant_team
+                   goals= 0 if goals.nil?
+                   @match.goals_visitant_team = goals + 1;
+                end
+              end
+              @match.save
+          end
         format.html { redirect_to '/details_match/' << @details_match.match_id.to_s << '/new', notice: 'Details match was successfully created.' }
         format.json { render :show, status: :created, location: @details_match }
       else
@@ -108,6 +135,16 @@ class DetailsMatchesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_details_match
       @details_match = DetailsMatch.find(params[:id])
+    end
+
+    def find_yellow_cards ()
+        @player = params[:player_id]
+        @events_match = DetailsMatch.where(match_id: params[:match_id], player_id:params[:player_id], event_id: 1)
+        if @events_match.blank?
+          return false
+        else
+          return true
+        end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

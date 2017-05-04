@@ -9,7 +9,7 @@ class MatchesController < ApplicationController
     @matches = Match.all if @matches.blank? && !params[:championship_id].present?
     page = params[:page]
     page = 1 if page.blank? && !params[:page].present?
-    @matches = @matches.paginate(:page => page, :per_page => 10)
+    @matches = @matches.paginate(:page => page, :per_page => 20)
   end
 
   # GET /matches/1

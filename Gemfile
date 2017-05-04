@@ -29,7 +29,7 @@ gem 'omniauth-facebook'
 gem 'flexbox_rb', "0.2.7.1"
 gem 'rolify'
 gem 'jquery-datetimepicker-rails'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '4.0.0.alpha3'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
@@ -42,6 +42,19 @@ gem 'cocaine'
 group :development, :test do
     gem 'railroady'
 end
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-nginx'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-upload-config'
+  gem 'sshkit-sudo'
+end
+
 
 
 # Use Redis adapter to run Action Cable in production
